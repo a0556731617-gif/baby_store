@@ -1,0 +1,191 @@
+:root {
+  --cream: #fffaf3;
+  --sage: #8fa889;
+  --sage-dark: #52694f;
+  --brown: #6e5141;
+  --pink: #e9c9c4;
+  --white: #ffffff;
+  --shadow: 0 5px 15px rgba(74, 58, 48, 0.13);
+}
+/* מונע רווחים מיותרים מעבר לרוחב שצריך */
+* { box-sizing: border-box; }
+/* גורם לדף לגלול חלק ויפה כשלוחצים על קישורי עוגן */
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  direction: rtl;
+  font-family: Arial, sans-serif;
+  color: #3f3833;
+  background: var(--cream);
+  line-height: 1.6;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+.site-header {
+  /* גורם לתפריט העליון "להידבק" לראש המסך כשהמשתמש גלול למטה, כך שהוא תמיד זמין. */
+  position: sticky;
+  top: 0;
+  /* דואג שהתפריט ישב מעל שאר אלמנטים הדף ולא יתכסה בהם */
+  z-index: 10;
+  /* זורק את הלוגו לצד אחד ואת קישורי התפריט לצד השני של המסך. */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  width: 100%;
+  padding: 14px 6%;
+  background: rgba(255, 250, 243, 0.96);
+  border-bottom: 2px solid #eaded2;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--sage-dark);
+  font-size: 1.45rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+.logo-mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--pink);
+  animation: gentle-pulse 2.5s infinite;
+}
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav-list a {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: 0.25s;
+}
+.nav-list a:hover,
+.nav-list a:focus { background: var(--sage); color: var(--white); }
+
+main { min-height: 65vh; }
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  padding: 55px 7%;
+  /* יוצר מעבר צבעים רך ועדין ברקע של האזור.*/
+  background: linear-gradient(135deg, #fffaf3, #edf2e9);
+}
+.hero-text, .hero-image { width: 50%; }
+.hero h1 { color: var(--sage-dark); font-size: clamp(2rem, 5vw, 3.6rem); margin: 0 0 12px; }
+.hero-image img { border-radius: 28px; box-shadow: var(--shadow); }
+.button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 22px;
+  border: 0;
+  border-radius: 24px;
+  background: var(--sage-dark);
+  color: var(--white);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  /* גורם לכפתור "לקפוץ" מעט כלפי מעלה */
+  transition: transform 0.25s, background 0.25s;
+}
+.button:hover { transform: translateY(-3px); background: var(--brown); }
+.button.secondary { background: #a98b78; }
+
+.content-section { width: 88%; max-width: 1100px; margin: 0 auto; padding: 45px 0; }
+.section-title { text-align: center; color: var(--sage-dark); margin-top: 0; }
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+.card {
+  position: relative;/* הורה */
+  width: 30%;
+  min-width: 240px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+.card img { width: 100%; height: 235px; object-fit: cover; }
+.card-content { padding: 18px; }
+.card h2, .card h3 { color: var(--sage-dark); margin: 0 0 6px; }
+.price { color: var(--brown); font-weight: bold; font-size: 1.1rem; }
+.badge {
+  position: absolute;/* צאצא */
+  top: 12px;
+  right: 12px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  background: var(--pink);
+  font-weight: bold;
+}
+.page-banner { padding: 45px 7%; text-align: center; background: #edf2e9; }
+.page-banner h1 { color: var(--sage-dark); margin: 0; }
+.info-box { max-width: 780px; margin: 25px auto; padding: 25px; border-radius: 18px; background: white; box-shadow: var(--shadow); }
+.features { list-style: "✓  "; padding-right: 24px; }
+.features li { margin-bottom: 10px; }
+
+.order-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px;
+  border-radius: 18px;
+  background: white;
+  box-shadow: var(--shadow);
+}
+/* מחשב שכל ופס יתפוס בדיוק חצי מהשורה */
+.form-field { width: calc(50% - 9px); }
+/* לשדות ארוכים שצריכים לתפוס 100% מקום */
+.form-field.full { width: 100%; }
+.form-field label { display: block; margin-bottom: 5px; font-weight: bold; }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #b9c5b5;
+  border-radius: 8px;
+  font: inherit;
+}
+.form-actions { display: flex; gap: 10px; width: 100%; }
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 28px 7%;
+  background: var(--sage-dark);
+  color: white;
+}
+.site-footer a { color: white; }
+
+@keyframes gentle-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@media (max-width: 760px) {
+  .site-header, .hero { flex-direction: column; }
+  .hero-text, .hero-image, .form-field { width: 100%; }
+  .hero { text-align: center; }
+  .nav-list { justify-content: center; }
+  .card { width: 100%; }
+  .site-footer { flex-direction: column; text-align: center; }
+}
